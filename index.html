@@ -1,30 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
- <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet" />
- <link href="./css/main.css" rel="stylesheet" />
- <title>Document</title>
- <style>
-   body {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     height: 100vh;
-     margin: 0;
-   }
-   .v536_86 {
-     cursor: pointer;
-   }
- </style>
+    <meta charset="UTF-8">
+    <title>Loading...</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: white;
+            color: #333;
+            font-family: monospace;
+            font-size: 24px;
+            text-align: center;
+        }
+        #loader {
+            white-space: pre;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
- <div class="v536_86" onclick="window.location.href='https://only-fade-542153.framer.app/'">
-   <span class="v536_87">Click Here</span>
- </div>
- <script>
-   document.querySelector('.v536_86').addEventListener('click', function() {
-     window.location.href = 'https://only-fade-542153.framer.app/';
-   });
- </script>
+    <div id="loader">
+    ╱▫️╲
+    ▫️  ▫️
+    ╲▫️╱
+    </div>
+    <script>
+        const loader = document.getElementById('loader');
+        const frames = [
+            `╱▫️╲
+▫️  ▫️
+╲▫️╱`,
+            `╲▫️╱
+▫️  ▫️
+╱▫️╲`,
+        ];
+        let currentFrame = 0;
+        
+        // Animation and redirect setup
+        const animationDuration = 3000; // 3 seconds
+        const redirectUrl = 'https://www.vineetpraj.framer.website'; // Replace with your desired URL
+
+        // Animate loader
+        const animationInterval = setInterval(() => {
+            loader.textContent = frames[currentFrame];
+            currentFrame = 1 - currentFrame;
+        }, 200);
+
+        // Set timeout for redirect
+        setTimeout(() => {
+            clearInterval(animationInterval);
+            window.location.href = redirectUrl;
+        }, animationDuration);
+    </script>
 </body>
 </html>
